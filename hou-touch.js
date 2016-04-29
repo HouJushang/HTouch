@@ -1,22 +1,16 @@
 (function (window) {
-  var T = window.houTouch = function (id) {
-    var obj = document.getElementById(id);
-    obj.addEventListener('touchstart', function (e) {
-      var touchObj = e.changedTouches[0]
-      console.log('x:' + touchObj.clientX, 'y:' + touchObj.clientY);
-    });
-    obj.addEventListener('touchmove',function(e){
-      var touchObj = e.changedTouches[0]
-      console.log('x:' + touchObj.clientX, 'y:' + touchObj.clientY);
-      T.move(touchObj.clientX,touchObj.clientY);
-    })
-    return houTouch;
-  }
-  T.move = function(x,y){
-    console.log(x,y);
-  }
-  T.swipeUp  = function(){
-    alert(1);
-  }
-
+    window.houT = function (id) {
+        var _this = this;
+        _this.obj = document.getElementById(id);
+        _this.obj.addEventListener('touchstart', function (e) {
+            var touchObj = e.changedTouches[0]
+            _this.startX = touchObj.clientX;
+            _this.starty = touchObj.clientX;
+        });
+        _this.obj.addEventListener('touchmove', function (e) {
+            var touchObj = e.changedTouches[0]
+            _this.nowX = touchObj.clientX;
+            _this.nowy = touchObj.clientX;
+        })
+    }
 })(window)
